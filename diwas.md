@@ -9,7 +9,7 @@ How to create a virtual machine to used Azure Platform for Linux Management Cour
 - Step 1: At first, I create a Azure account from portal.azure.com for myself using my university email. 
 
 
-![Azure View after login ] 
+
 ![!\[alt text\](<Screenshot 2025-01-20 220903.png>)](<Screenshot 2025-01-22 234259.png>)
 
 - Step 2: I created a new resource group  and new virtual machine in Azure portal.
@@ -26,7 +26,7 @@ How to create a virtual machine to used Azure Platform for Linux Management Cour
 
 - Step 8: I selected inbound ports as (Http(80), HTTPS(443), SSH(22))
 
-- Step 9: I selected the Enable auto-shutdown and set the auto-shutdown time as 2:00 AM and Select the time Zone as (UTC + 21:00) Helsinki
+- Step 9: I selected the Enable auto-shutdown and set the auto-shutdown time as 10:00 PM and Select the time Zone as (UTC + 21:00) Helsinki
 
 - Step 10: I reviewed the settings and created the virtual machine.
 
