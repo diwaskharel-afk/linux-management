@@ -38,3 +38,78 @@ After creating the virtual machine, I go to lab-robotics-ip and select setting(C
 - Step 12: I open the terminal and paste the URL given in SSH to VM with specified private key.
 
 ![alt text](<Screenshot 2025-01-22 234259.png>)
+
+
+# Assignment 3 User Management and File System access
+
+1. Creating Users 
+Tupu (Using)
+To create the user tupu, use the following command:
+
+        sudo adduser tupu
+This will:
+- Create a new user tupu.
+- Automatically create the home directory /home/tupu.
+- Set the default shell to /bin/bash.
+- Prompt for password creation and additional user details.
+
+Tupu (Using)
+To create the user lupu, use the following command:
+
+        sudo useradd -m -d /home/lupu -s /bin/bash -G lupu lupu
+This will:
+- Create the user lupu
+- Set the home directory to /home/lupu
+- Assign the default shell /bin/bash
+- Add lupu to the lupu group
+
+Set a password for lupu:
+
+        sudo passwd lupu
+
+Hupu (System User)
+To create a system user hupu with restricted login, use:
+
+        sudo useradd --system --shell /bin/false hupu
+This ensures that hupu cannot log in interactively.
+
+2. Granting Sudo Privilege 
+Method 1: Using (Recommended)
+Edit the sudoers file safely:
+
+        sudo visudo 
+Add the following lines at the end:
+
+        tupu ALL=(ALL:ALL) ALL
+        lupu ALL=(ALL:ALL) ALL
+Save and exit.
+
+Method 2: Adding Users to the Group
+Alternatively, run:
+
+        sudo usermod -aG sudo tupu
+        sudo usermod -aG sudo lupu
+
+
+3. Setting Up Shared directory
+    sudo mkdir -p /opt/projekti
+    sudo groupadd projekti
+    sudo usermod -aG projekti tupu
+    sudo usermod -aG projekti lupu
+    sudo chown -R :projekti /opt/projekti
+    sudo chmod 2770 /opt/projekti
+
+
+4. Verification 
+Check user groups:
+
+        groups tupu
+        groups lupu
+Check directory permissions:
+
+        ls -ld /opt/projekti
+# Output
+
+        drwxrws--- 2 root projekti 4096 Jan 30 20:00 /opt/projekti
+
+![alt text](<Screenshot 2025-01-30 220218.png>)
